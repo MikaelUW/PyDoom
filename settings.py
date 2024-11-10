@@ -1,4 +1,5 @@
-
+WIDTH = 1900
+HEIGHT = 1040
 
 FPS = 120 #fps limit
 

@@ -1,22 +1,21 @@
 import pygame as pg
 import sys
-from settings import *
+from settings import *  # Importa tudo de settings
 from mapa import *
 from player import *
 
 class Game:
     def __init__(self):
         pg.init()
-        info = pg.display.Info()
-        self.WIDTH, self.HEIGHT = info.current_w, info.current_h
-        self.screen = pg.display.set_mode((self.WIDTH, self.HEIGHT), pg.FULLSCREEN)
+        # Define a tela com os valores WIDTH e HEIGHT importados de settings
+        self.screen = pg.display.set_mode((WIDTH, HEIGHT), pg.RESIZABLE)
         self.clock = pg.time.Clock()
         self.delta_time = 1
         self.new_game()
 
     def new_game(self):
         self.map = Map(self)
-        self.player = Player(self, self.WIDTH, self.HEIGHT)  # Passe WIDTH e HEIGHT
+        self.player = Player(self, WIDTH, HEIGHT)  # Passe WIDTH e HEIGHT para o Player
 
     def update_screen(self):
         self.player.update()
@@ -44,4 +43,3 @@ class Game:
 if __name__ == "__main__":
     game = Game()
     game.run()
- ### RAY CASTING
