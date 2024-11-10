@@ -59,6 +59,21 @@ class RayCasting:
         #    pg.draw.line(self.game.screen, 'yellow', (100 * ox, 100 * oy),
         #                 (100 * ox + 100 * depth * cos_a, 100 * oy + 100 * depth * sin_a), 2)
 
+
+            # _____________Remove olho de peixe_____________
+            # Testar com e sem depois para a aplicacao da textura de tv antiga.
+
+            depth *= math.cos(self.game.player.angle - ray_angle)
+
+            # _____________Projeçao_____________
+            proj_heigth = SCREEN_DIST / (depth + 0.0001)
+
+            # _____________Desenha os muros_____________
+
+            color = [255 / (1 + depth ** 5 * 0.00002)] * 3 #adiciona o fog effect
+            pg.draw.rect(self.game.screen, color,
+                         (ray * SCALE, HALF_HEIGTH - proj_heigth // 2, SCALE, proj_heigth))
+
             ray_angle += DELTA_ANGLE
 
     def update(self):

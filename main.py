@@ -28,8 +28,9 @@ class Game:
 
     def draw_screen(self):
         self.screen.fill("black")
-        self.map.draw()
-        self.player.draw_player()
+        # Pra debug: descomente pra ver a visao teorica
+        #self.map.draw()
+        #self.player.draw_player()
 
     def check_exit(self):
         for event in pg.event.get():
@@ -46,3 +47,5 @@ class Game:
 if __name__ == "__main__":
     game = Game()
     game.run()
+
+    #TEXTURING
