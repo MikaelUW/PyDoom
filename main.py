@@ -3,6 +3,7 @@ import sys
 from settings import *  # Importa tudo de settings
 from mapa import *
 from player import *
+from raycasting import *
 
 class Game:
     def __init__(self):
@@ -16,9 +17,11 @@ class Game:
     def new_game(self):
         self.map = Map(self)
         self.player = Player(self, WIDTH, HEIGHT)  # Passe WIDTH e HEIGHT para o Player
+        self.raycasting = RayCasting(self)
 
     def update_screen(self):
         self.player.update()
+        self.raycasting.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f"{self.clock.get_fps():.1f}")

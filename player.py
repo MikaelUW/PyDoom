@@ -37,7 +37,7 @@ class Player:
         self.angle %= math.tau
     #ve se tem muro
     def check_wall(self, x, y):
-        return (x, y) not in self.game.map.word_map
+        return (x, y) not in self.game.map.world_map
     #da colisao se tem muro
     def check_wall_collision (self, dx, dy):
         if self.check_wall(int(self.x + dx), int(self.y)):
@@ -47,9 +47,9 @@ class Player:
 
     def draw_player(self):
         pg.draw.line(self.game.screen, 'yellow', 
-                     (self.x * 100, self.y * 100),
-                     (self.x * 100 + self.WIDTH * math.cos(self.angle),
-                      self.y * 100 + self.HEIGHT * math.sin(self.angle)), 2)
+                    (self.x * 100, self.y * 100),
+                    (self.x * 100 + self.WIDTH * math.cos(self.angle),
+                     self.y * 100 + self.HEIGHT * math.sin(self.angle)), 2)
         pg.draw.circle(self.game.screen, 'green', (self.x * 100, self.y * 100), 15)
 
     def update(self):
