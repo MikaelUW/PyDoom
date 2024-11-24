@@ -1,9 +1,10 @@
 import pygame as pg
 import sys
-from settings import *  # Importa tudo de settings
+from settings import *
 from mapa import *
 from player import *
 from raycasting import *
+from object_renderer import *
 
 class Game:
     def __init__(self):
@@ -17,6 +18,7 @@ class Game:
     def new_game(self):
         self.map = Map(self)
         self.player = Player(self, WIDTH, HEIGHT)  # Passe WIDTH e HEIGHT para o Player
+        self.object_render = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
 
     def update_screen(self):
@@ -28,6 +30,7 @@ class Game:
 
     def draw_screen(self):
         self.screen.fill("black")
+        self.object_render.draw()
         # Pra debug: descomente pra ver a visao teorica
         #self.map.draw()
         #self.player.draw_player()
