@@ -40,9 +40,10 @@ class Player:
         return (x, y) not in self.game.map.world_map
     #da colisao se tem muro
     def check_wall_collision (self, dx, dy):
-        if self.check_wall(int(self.x + dx), int(self.y)):
+        scale = PLAYER_FAT / self.game.delta_time
+        if self.check_wall(int(self.x + dx * scale), int(self.y)):
             self.x += dx
-        if self.check_wall(int(self.x), int(self.y + dy)):
+        if self.check_wall(int(self.x), int(self.y + dy * scale)):
             self.y += dy
 
     def draw_player(self):
