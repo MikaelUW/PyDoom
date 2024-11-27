@@ -8,19 +8,31 @@ class RayCasting:
         self.ray_casting_reseult = []
         self.object_to_render = []
         self.textures  = self.game.object_render.wall_textures
-
+        
     def get_objects_to_render(self):
         self.object_to_render = []
         for ray, value in enumerate(self.ray_casting_reseult):
-            depth, proj_heigth, texture, offset = value
+            depth, proj_height, texture, offset = value
+            
+            if proj_height < HEIGHT:
+                wall_column = self.textures[texture].subsurface(
+                    offset * (TEXTURE_SIZE - SCALE), 0, SCALE, TEXTURE_SIZE
+                )
+                wall_column = pg.transform.scale(wall_column, (SCALE, proj_height))
+                wall_pos = (ray * SCALE, HALF_HEIGTH - proj_height // 2)
 
-            wall_column = self.textures[texture].subsurface(
-                offset * (TEXTURE_SIZE - SCALE), 0, SCALE, TEXTURE_SIZE
-            )
-            wall_column = wall_column = pg.transform.scale(wall_column, (SCALE, proj_heigth))
-            wall_pos = (ray * SCALE, HALF_HEIGTH - proj_heigth // 2)
+                self.object_to_render.append((depth, wall_column, wall_pos))
+            else:
+                texture_height = TEXTURE_SIZE * HEIGHT / proj_height
+                wall_column = self.textures[texture].subsurface(
+                    offset * (TEXTURE_SIZE - SCALE), HALF_TEXTURE_SIZE - texture_height // 2,
+                    SCALE, texture_height
+                )
+                wall_column = pg.transform.scale(wall_column, (SCALE, HEIGHT))
+                wall_pos = (ray * SCALE, 0)
 
-            self.object_to_render.append((depth, wall_column, wall_pos))
+                self.object_to_render.append((depth, wall_column, wall_pos))
+
 
     def ray_cast(self):
         self.ray_casting_reseult = []
