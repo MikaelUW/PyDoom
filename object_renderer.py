@@ -6,7 +6,7 @@ class ObjectRenderer:
         self.game = game
         self.screen = game.screen
         self.wall_textures = self.load_wall_textures()
-        self.sky_image = self.get_texture('RaycastingGame/resources/textures/sky_texture.jpg', (WIDTH, HALF_HEIGTH))
+        self.sky_image = self.get_texture('RaycastingGame/resources/textures/1.png', (WIDTH, HALF_HEIGTH))
         self.sky_offsert = 0
 
     def draw(self):
@@ -14,9 +14,9 @@ class ObjectRenderer:
         self.render_game_objects()
         
     def draw_background(self):
-        self.skt_offsert = (self.sky_offsert + 4.0 * self.game.player.angle) % WIDTH
-        self.screen.blit(self.sky_image, (-self.skt_offsert, 0))
-        self.screen.blit(self.sky_image, (-self.skt_offsert + WIDTH, 0))
+       # self.skt_offsert = (self.sky_offsert + 4.0 * self.game.player.angle) % WIDTH
+        #self.screen.blit(self.sky_image, (-self.skt_offsert, 0))
+        #self.screen.blit(self.sky_image, (-self.skt_offsert + WIDTH, 0))
         #Chao
         pg.draw.rect(self.screen, FLOOR_COLOR, (0, HALF_HEIGTH, WIDTH, HEIGHT))
 

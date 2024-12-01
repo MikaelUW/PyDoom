@@ -29,7 +29,7 @@ class Game:
         pg.display.set_caption(f"{self.clock.get_fps():.1f}")
 
     def draw_screen(self):
-        #self.screen.fill("black")
+        self.screen.fill("#666667")
         self.object_render.draw()
         # Pra debug: descomente pra ver a visao teorica
         #self.map.draw()
