@@ -5,6 +5,8 @@ from mapa import *
 from player import *
 from raycasting import *
 from object_renderer import *
+from sprite_object import *
+from object_handler import *
 
 class Game:
     def __init__(self):
@@ -20,10 +22,12 @@ class Game:
         self.player = Player(self, WIDTH, HEIGHT)  # Passe WIDTH e HEIGHT para o Player
         self.object_render = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
+        self.object_render = ObjectHandler(self)
 
     def update_screen(self):
         self.player.update()
         self.raycasting.update()
+        self.object_render.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f"{self.clock.get_fps():.1f}")
