@@ -91,8 +91,8 @@ class RayCasting:
                 offset = (1 - x_hor) if sin_a > 0 else x_hor
 
             # Pra debug: mostra os raios na tela
-        #    pg.draw.line(self.game.screen, 'yellow', (100 * ox, 100 * oy),
-        #                 (100 * ox + 100 * depth * cos_a, 100 * oy + 100 * depth * sin_a), 2)
+            pg.draw.line(self.game.screen, 'yellow', (100 * ox, 100 * oy),
+                         (100 * ox + 100 * depth * cos_a, 100 * oy + 100 * depth * sin_a), 2)
 
 
             # _____________Remove olho de peixe_____________

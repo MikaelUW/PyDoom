@@ -27,17 +27,17 @@ class Game:
     def update_screen(self):
         self.player.update()
         self.raycasting.update()
-        self.object_render.update()
+       # self.object_render.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f"{self.clock.get_fps():.1f}")
 
     def draw_screen(self):
-        self.screen.fill("#666667")
-        self.object_render.draw()
+        self.screen.fill("Black")
+        #self.object_render.draw()
         # Pra debug: descomente pra ver a visao teorica
-        #self.map.draw()
-        #self.player.draw_player()
+        self.map.draw()
+        self.player.draw_player()
 
     def check_exit(self):
         for event in pg.event.get():
